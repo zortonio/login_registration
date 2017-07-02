@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login/Registration</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form action="/validate" method="post">
+      <div class="labels">
+        <label for="email">Email: <input type="text" name="email"></label>
+        <label for="pw">Password: <input type="text" name="pw"></label>
+      </div>
+      <div class="buttons">
+        <input type="submit" name="submit" value="Login">
+      </div>
+    </form>
+    <a href="/register">Not a returning user? Register Here!</a>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p class="message">{{message}}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </body>
+</html>
